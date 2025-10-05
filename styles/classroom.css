@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-attachment: fixed;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.legend-box {
+    width: 25px;
+    height: 25px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 10px;
+}
+    
+.occupied { background-color: #c0392b; }
+.vacant { background-color: #27ae60; }
+
+.room-card {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    border: 2px solid #1d1d1d;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.building-section {
+    border: 2px solid #1d1d1d;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fdfdfd;
+}
+
+.legend-card {
+    border: 2px solid #1d1d1d;
+    border-radius: 12px;
+    background: #fdfdfd;
+}
+
+footer {
+    font-size: 0.8rem;
+    color: #666;
+}

@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    font-family: "Poppins", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #090c1d;
+}
+
+.background {
+    background-color: #090c1d;
+}
+
+.flex-wrapper {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-container {
+    border-radius: 10px;
+}
+
+.button-text p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+}
