@@ -180,3 +180,24 @@ function fetch_admin() {
          }
       })
 }
+
+
+//fetch room status
+function fetch_room_status() {
+   $.get("../crud/php/fetch_room_status.php", function (response) {
+      let rooms = JSON.parse(response);
+
+      rooms.forEach(room => {
+         const room_status = document.getElementById(`${room.room_name}`);
+
+         if (room.status === "occupied") {
+            room_status.style.backgroundColor = "red";
+            room_status.style.color = "white";
+         } else {
+            room_status.style.backgroundColor = "rgb(11, 162, 11)";
+            room_status.style.color = "white";
+
+         }
+      });
+   });
+}

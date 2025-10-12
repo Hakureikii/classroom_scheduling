@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2025 at 10:05 AM
+-- Generation Time: Oct 08, 2025 at 01:20 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,10 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`course_id`, `course_code`, `descriptive_title`, `units`) VALUES
-(1, 'BA 234', 'Technopreneurship', '3');
+(1, 'BA 234', 'Technopreneurship', '3'),
+(2, 'HCI II', 'Human Computer Interaction 2', '3'),
+(3, 'CIT 236', 'Client Server', '3'),
+(4, 'CC 208', 'Methods of Research in Computing', '3');
 
 -- --------------------------------------------------------
 
@@ -82,7 +85,10 @@ CREATE TABLE `instructors` (
 
 INSERT INTO `instructors` (`instructor_id`, `first_name`, `middle_name`, `last_name`, `sex`, `email`, `password`) VALUES
 (1, 'Jan Kennard', 'Gadong', 'Solanib', 'Male', 'solanibjankennard@gmail.com', 'solanib123'),
-(2, 'Sean Ivan', 'Ambot', 'Gimeno', 'Male', 'gimenoseanivan@gmail.com', 'gimeno123');
+(2, 'Sean Ivan', 'Ambot', 'Gimeno', 'Male', 'gimenoseanivan@gmail.com', 'gimeno123'),
+(3, 'Billy Joe', '...', 'Lupera', 'Male', 'lupera@gmail.com', '$2y$10$MsrOceyP7cFBVm26dnBgROuDeAsdqWv/4Gwdez5kqQSyEFcr1JOWe'),
+(4, 'Joyce', 'Capillo', 'Limua', 'Female', 'limua@gmail.com', '$2y$10$cy4hCrVfwaFh7dN2D03XEu4AgMpF/nQeCpN1zzFpE4eQyQxFAveEe'),
+(5, 'Lovelyn', '...', 'Castro', 'Female', 'castro@gmail.com', '$2y$10$tabbCSBxb5x2p6rg28c8.ehMZatkqtemb79A0BuKaBpUoBkXePZMG');
 
 -- --------------------------------------------------------
 
@@ -132,7 +138,10 @@ INSERT INTO `schedules` (`schedule_id`, `room_id`, `assignment_id`, `day`, `time
 (21, 1, 1, 'Monday', '16:00:00', '17:30:00'),
 (23, 3, 1, 'Thursday', '13:00:00', '14:30:00'),
 (24, 1, 2, 'Tuesday', '14:30:00', '16:00:00'),
-(25, 2, 2, 'Monday', '10:30:00', '12:00:00');
+(25, 2, 2, 'Monday', '10:30:00', '12:00:00'),
+(28, 6, 5, 'Wednesday', '07:30:00', '10:30:00'),
+(29, 3, 6, 'Wednesday', '14:30:00', '16:30:00'),
+(30, 1, 7, 'Wednesday', '13:00:00', '14:30:00');
 
 -- --------------------------------------------------------
 
@@ -202,7 +211,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `first_name`, `middle_name`, `last_name`, `sex`, `email`, `password`, `section_id`) VALUES
-(1, 'Kenneth', 'Alfonso', 'Casaquite', 'Male', 'casaquitekenneth@gmail.com', 'tenshiisan21', 8);
+(1, 'Kenneth', 'Alfonso', 'Casaquite', 'Male', 'casaquitekenneth@gmail.com', 'tenshiisan21', 8),
+(2, 'Angel Rose', 'Cedazo', 'Recabar', 'Female', 'recabarangelrose@gmail.com', '$2y$10$2USeJZhvYLHrVjs50JP2H./8757MqzwOVbdKCgj7haAkYsgBeAnQi', 8);
 
 -- --------------------------------------------------------
 
@@ -223,7 +233,10 @@ CREATE TABLE `teaching_assignments` (
 
 INSERT INTO `teaching_assignments` (`assignment_id`, `course_id`, `instructor_id`, `section_id`) VALUES
 (1, 1, 1, 8),
-(2, 1, 2, 9);
+(2, 1, 2, 9),
+(5, 2, 3, 8),
+(6, 3, 4, 8),
+(7, 4, 5, 8);
 
 --
 -- Indexes for dumped tables
@@ -306,13 +319,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `instructors`
 --
 ALTER TABLE `instructors`
-  MODIFY `instructor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `instructor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -324,7 +337,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `sections`
@@ -342,13 +355,13 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `teaching_assignments`
 --
 ALTER TABLE `teaching_assignments`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

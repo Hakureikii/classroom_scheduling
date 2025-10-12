@@ -20,6 +20,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
 
 <body class="bg-light">
    <div class="d-flex">
+      
       <!-- Sidebar -->
       <div class="bg-dark text-white p-3" style="width:250px; height:100vh;">
          <h4 class="fw-bold">ICAS</h4>

@@ -23,7 +23,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
     <div class="d-flex">
 
         <!-- Sidebar -->
-        <div class="bg-dark text-white p-3" style="width:250px; height:100vh;">
+        <div class="bg-dark text-white p-3" style="width:265px; height:100vh;">
             <h4 class="fw-bold">ICAS</h4>
             <hr class="border-light">
             <h1 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h1>
