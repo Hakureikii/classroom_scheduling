@@ -152,3 +152,24 @@ function add_users(first_name, middle_name, last_name, sex, section, email, pass
    }
 
 }
+
+
+//add courses
+function add_courses(course_code, descriptive_title, units) {
+   $.post("../crud/php/create_courses.php",
+      {
+         course_code: course_code,
+         descriptive_title: descriptive_title,
+         units: units,
+      },
+      function (response) {
+         if (response === "success") {
+            fetch_courses();
+            $("#addCourseModal").hide();
+         } else {
+            let add_courses_feedback = document.getElementById("add_courses_message");
+            add_courses_feedback.innerHTML = `<p class="text-danger fs-6 fw-normal"> Existing Course! </p>`
+            $("#add_courses_message").fadeOut(5000);
+         }
+      })
+}

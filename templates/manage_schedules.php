@@ -31,9 +31,11 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
             <li class="nav-item"><a href="admin_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
             <li class="nav-item"><a href="manage_users.php" class="nav-link text-white">👤 Manage Users</a></li>
             <li class="nav-item"><a href="manage_sections.php" class="nav-link text-white">👥 Manage Sections</a></li>
-            <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching Assignments</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-white">📖 Manage Courses</a></li>
-            <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white active">🗓️ Manage Schedules</a></li>
+            <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching
+                  Assignments</a></li>
+            <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
+            <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white active">🗓️ Manage
+                  Schedules</a></li>
             <li class="nav-item"><a href="classroom.php" class="nav-link text-white">🏛️ Classrooms</a></li>
          </ul>
          <hr class="border-light">
@@ -56,9 +58,16 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
          <div class="p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
                <h5 class="fw-bold">Schedules</h5>
-               <!-- Open Modal Button -->
-               <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#addScheduleModal">✙ Add
-                  Schedule</button>
+               <div class="d-flex">
+                  Select Instructors:
+                  <select name="" id="select_instructors" class="ms-2 me-2 form-select-sm">
+                     <option value=""> - Select Instructor -</option>
+                  </select>
+                  <!-- Open Modal Button -->
+                  <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#addScheduleModal">✙ Add
+                     Schedule</button>
+               </div>
+
             </div>
 
             <!-- Schedule Table -->
@@ -95,7 +104,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
                <form id="form_add_schedule">
                   <div class="row g-3">
                      <div class="col-md-6">
-                        Day:  
+                        Day:
                         <select name="" id="day" class="form-select">
                            <option value="Monday">Monday</option>
                            <option value="Tuesday">Tuesday</option>
@@ -190,6 +199,20 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
          }
       });
 
+      //display schedules by instructors
+      $.get("../crud/php/fetch_instructors.php", function (response) {
+         const instructors = document.getElementById("select_instructors");
+         let instructor = JSON.parse(response);
+         for (let i = 0; i < instructor.length; i++) {
+            let option = new Option(instructor[i].instructor_name, instructor[i].instructor_id);
+            instructors.add(option);
+         }
+      });
+
+
+      $(document).on('change', '#select_instructors', fetch_schedules)
+      fetch_schedules();
+
 
       // submit schedule
       $("#form_add_schedule").submit(function (e) {
@@ -201,11 +224,6 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
          let course_assignment = $("#course_assignment").val();
          form_add_new_schedules(day, start_time, end_time, room_no, course_assignment);
       });
-
-
-      // refresh schedules
-      fetch_schedules();
-      setInterval(fetch_schedules, 3000);
 
 
       // reload on back button

@@ -67,12 +67,12 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
       <li class="nav-item"><a href="manage_users.php" class="nav-link text-white">👤 Manage Users</a></li>
       <li class="nav-item"><a href="manage_sections.php" class="nav-link text-white">👥 Manage Sections</a></li>
       <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching Assignments</a></li>
-      <li class="nav-item"><a href="#" class="nav-link text-white">📖 Manage Courses</a></li>
+      <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
       <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a></li>
       <li class="nav-item"><a href="classroom.php" class="nav-link text-white active">🏛️ Classrooms</a></li>
     </ul>
     <hr class="border-light">
-    <a href="#" class="btn btn-outline-light w-100">🚪 Logout</a>
+    <a href="../auth/php/logout.php" class="btn btn-outline-light w-100">🚪 Logout</a>
   </div>
 
   <div class="main-content">
@@ -91,10 +91,10 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
           <h5 class="text-center fw-bold mb-3">Third Floor</h5>
           <div class="floor-layout">
             <div class="staircase-box">Staircase</div>
-            <div class="room" id="Room 11">RM 11</div>
-            <div class="room" id="Room 10">RM 10</div>
-            <div class="room" id="Room 9">RM 9</div>
-            <div class="room" id="Room 8">RM 8</div>
+            <div class="room" id="Room 11" style="background-color: rgb(11, 162, 11); color: white">RM 11</div>
+            <div class="room" id="Room 10" style="background-color: rgb(11, 162, 11); color: white">RM 10</div>
+            <div class="room" id="Room 9" style="background-color: rgb(11, 162, 11); color: white">RM 9</div>
+            <div class="room" id="Room 8" style="background-color: rgb(11, 162, 11); color: white">RM 8</div>
             <div class="staircase-box">Staircase</div>
             <div class="office bg-primary text-white">MIS Office</div>
           </div>
@@ -105,9 +105,9 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
           <h5 class="text-center fw-bold mb-3">Second Floor</h5>
           <div class="floor-layout">
             <div class="staircase-box">Staircase</div>
-            <div class="room" id="Room 7">RM 7</div>
-            <div class="room" id="Room 6">RM 6</div>
-            <div class="room" id="Room 5">RM 5</div>
+            <div class="room" id="Room 7" style="background-color: rgb(11, 162, 11); color: white">RM 7</div>
+            <div class="room" id="Room 6" style="background-color: rgb(11, 162, 11); color: white">RM 6</div>
+            <div class="room" id="Room 5" style="background-color: rgb(11, 162, 11); color: white">RM 5</div>
             <div class="office bg-primary text-white">Faculty Room</div>
             <div class="staircase-box">Staircase</div>
             <div class="office bg-primary text-white">ICT Office</div>

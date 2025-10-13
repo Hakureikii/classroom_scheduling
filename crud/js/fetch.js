@@ -1,6 +1,6 @@
 //retrieve schedules 
 function fetch_schedules() {
-   $.get("../crud/php/fetch_schedules.php",
+   $.post("../crud/php/fetch_schedules.php", { instructor_id: $("#select_instructors").val() },
       function (response) {
          let schedules = JSON.parse(response);
          let schedule_table = document.getElementById("schedule_table");
@@ -199,5 +199,39 @@ function fetch_room_status() {
 
          }
       });
+   });
+}
+
+
+function fetch_courses() {
+   $.get("../crud/php/fetch_courses.php", function (response) {
+      let courses = JSON.parse(response);
+      let courses_table = $("#course_table");
+      let display_courses = "";
+
+      if (courses.length > 0) {
+         courses.forEach((course, index) => {
+            display_courses += `
+               <tr>
+                  <td>${index + 1}</td>
+                  <td>${course.course_code}</td>
+                  <td>${course.descriptive_title}</td>
+                  <td>${course.units}</td>
+                  <td>
+                  <button class="btn btn-sm btn-outline-danger course-delete-btn" data-id="${course.course_id}"> 🗑 </button>
+                  <button class="btn btn-sm btn-outline-success course-edit-btn"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#editCourseModal"
+                     data-id = "${course.course_id}"
+                     data-code = "${course.course_code}"
+                     data-title = "${course.descriptive_title}"
+                     data-units = "${course.units}"> 
+                     ✎ </button></td>
+               </tr>`;
+         });
+      } else {
+         display_courses = `<tr><td colspan="5" class="text-center text-muted">No courses found.</td></tr>`;
+      }
+      courses_table.html(display_courses);
    });
 }

@@ -35,7 +35,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
                 </li>
                 <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching
                         Assignments</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">📖 Manage Courses</a></li>
+                <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
                 <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a>
                 </li>
                 <li class="nav-item"><a href="classroom.php" class="nav-link text-white">🏛️ Classrooms</a>
