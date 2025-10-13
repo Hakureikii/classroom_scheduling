@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2025 at 01:20 AM
+-- Generation Time: Oct 14, 2025 at 01:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -141,7 +141,8 @@ INSERT INTO `schedules` (`schedule_id`, `room_id`, `assignment_id`, `day`, `time
 (25, 2, 2, 'Monday', '10:30:00', '12:00:00'),
 (28, 6, 5, 'Wednesday', '07:30:00', '10:30:00'),
 (29, 3, 6, 'Wednesday', '14:30:00', '16:30:00'),
-(30, 1, 7, 'Wednesday', '13:00:00', '14:30:00');
+(30, 1, 7, 'Wednesday', '13:00:00', '14:30:00'),
+(31, 1, 7, 'Monday', '14:30:00', '16:00:00');
 
 -- --------------------------------------------------------
 
@@ -337,7 +338,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `sections`
