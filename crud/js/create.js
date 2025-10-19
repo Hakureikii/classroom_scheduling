@@ -10,6 +10,7 @@ function form_add_new_schedules(day, start_time, end_time, room_no, course_assig
       },
 
       function (response) {
+         alert(response);
          let feedback = document.getElementById("message");
          if (response === "overlap") {
             feedback.innerHTML = `<p class="text-danger fs-6 fw-normal"> Conflicting Schedule Unable to Insert </p>`;
@@ -170,6 +171,7 @@ function add_courses(course_code, descriptive_title, units) {
             let add_courses_feedback = document.getElementById("add_courses_message");
             add_courses_feedback.innerHTML = `<p class="text-danger fs-6 fw-normal"> Existing Course! </p>`
             $("#add_courses_message").fadeOut(5000);
+            
          }
       })
 }

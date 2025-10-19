@@ -183,6 +183,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
 <script src="../jquery.js"></script>
 <script src="../crud/js/event_listeners.js"></script>
 <script src="../crud/js/create.js"></script>
+<script src="../crud/js/delete.js"></script>
 <script src="../crud/js/fetch.js"></script>
 <script src="../crud/js/update.js"></script>
 

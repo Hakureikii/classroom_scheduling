@@ -111,7 +111,7 @@ function fetch_students() {
                <td> ${students[i].sex} </td>
                <td> ${students[i].email} </td>
                <td> ${students[i].password} </td>
-               <td class="text-center"> <button onclick="delete_student(${students[i].student_id});" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUsersModal"> 🗑 </button> </td>
+               <td class="text-center"> <button onclick="delete_student(${students[i].student_id});" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteUsersModal"> 🗑 Delete </button> </td>
             </tr>`
             }
             student_table.innerHTML = display_students;
@@ -142,7 +142,7 @@ function fetch_instructors() {
                <td> ${instructors[i].sex} </td>
                <td> ${instructors[i].email} </td>
                <td> ${instructors[i].password} </td>
-               <td class="text-center"> <button onclick="delete_instructor(${instructors[i].instructor_id});" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUsersModal"> 🗑 </button> </td>
+               <td class="text-center"> <button onclick="delete_instructor(${instructors[i].instructor_id});" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteUsersModal"> 🗑 Delete </button> </td>
             </tr>`
             }
             instructor_table.innerHTML = display_instructors;
@@ -188,7 +188,7 @@ function fetch_room_status() {
       let rooms = JSON.parse(response);
 
       rooms.forEach(room => {
-         const room_status = document.getElementById(`${room.room_name}`);
+         let room_status = document.getElementById(`${room.room_name}`);
 
          if (room.status === "occupied") {
             room_status.style.backgroundColor = "red";
@@ -218,7 +218,7 @@ function fetch_courses() {
                   <td>${course.descriptive_title}</td>
                   <td>${course.units}</td>
                   <td>
-                  <button class="btn btn-sm btn-outline-danger course-delete-btn" data-id="${course.course_id}"> 🗑 </button>
+                  <button class="btn btn-sm btn-outline-danger course-delete-btn" data-id="${course.course_id}"> 🗑 Delete </button>
                   <button class="btn btn-sm btn-outline-success course-edit-btn"
                      data-bs-toggle="modal" 
                      data-bs-target="#editCourseModal"
@@ -226,7 +226,7 @@ function fetch_courses() {
                      data-code = "${course.course_code}"
                      data-title = "${course.descriptive_title}"
                      data-units = "${course.units}"> 
-                     ✎ </button></td>
+                     ✎ Edit </button></td>
                </tr>`;
          });
       } else {

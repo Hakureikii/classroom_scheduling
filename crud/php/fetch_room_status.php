@@ -10,7 +10,8 @@ $stmt = $conn->prepare("SELECT
    END AS status
 FROM schedules AS sch
 INNER JOIN rooms as rm ON sch.room_id = rm.room_id
-WHERE DAYNAME(NOW()) = sch.day");
+WHERE DAYNAME(NOW()) = sch.day
+ORDER BY FIELD(status, 'inactive', 'occupied')");
 $stmt->execute();
 $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

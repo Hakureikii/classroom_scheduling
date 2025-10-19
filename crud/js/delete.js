@@ -37,3 +37,17 @@ $("#confirm_delete_student").on("click", function () {
             
         })
 })
+
+//delete courses
+$(document).on('click', '.course-delete-btn', function() {
+    let course_id = $(this).data("id");
+    if (!confirm("Delete Course?")) {
+        return;
+    } $.post("../crud/php/delete_courses.php", {
+        course_id: course_id 
+    }, 
+    function(response) {
+        alert(response);
+        fetch_courses();
+    })
+})

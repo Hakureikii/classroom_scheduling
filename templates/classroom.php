@@ -15,6 +15,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ICT Building</title>
+  <link rel="icon" href="../assets/icons/web-icon.png" type="image/x-icon">
   <link rel="stylesheet" href="../styles/bootstrap-5.3.8-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../styles/classroom.css">
   <style>
@@ -91,10 +92,10 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
           <h5 class="text-center fw-bold mb-3">Third Floor</h5>
           <div class="floor-layout">
             <div class="staircase-box">Staircase</div>
-            <div class="room" id="Room 11" style="background-color: rgb(11, 162, 11); color: white">RM 11</div>
-            <div class="room" id="Room 10" style="background-color: rgb(11, 162, 11); color: white">RM 10</div>
-            <div class="room" id="Room 9" style="background-color: rgb(11, 162, 11); color: white">RM 9</div>
-            <div class="room" id="Room 8" style="background-color: rgb(11, 162, 11); color: white">RM 8</div>
+            <div class="room" id="room_11" style="background-color: rgb(11, 162, 11); color: white">RM 11</div>
+            <div class="room" id="room_10" style="background-color: rgb(11, 162, 11); color: white">RM 10</div>
+            <div class="room" id="room_9" style="background-color: rgb(11, 162, 11); color: white">RM 9</div>
+            <div class="room" id="room_8" style="background-color: rgb(11, 162, 11); color: white">RM 8</div>
             <div class="staircase-box">Staircase</div>
             <div class="office bg-primary text-white">MIS Office</div>
           </div>
@@ -105,9 +106,9 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
           <h5 class="text-center fw-bold mb-3">Second Floor</h5>
           <div class="floor-layout">
             <div class="staircase-box">Staircase</div>
-            <div class="room" id="Room 7" style="background-color: rgb(11, 162, 11); color: white">RM 7</div>
-            <div class="room" id="Room 6" style="background-color: rgb(11, 162, 11); color: white">RM 6</div>
-            <div class="room" id="Room 5" style="background-color: rgb(11, 162, 11); color: white">RM 5</div>
+            <div class="room" id="room_7" style="background-color: rgb(11, 162, 11); color: white">RM 7</div>
+            <div class="room" id="room_6" style="background-color: rgb(11, 162, 11); color: white">RM 6</div>
+            <div class="room" id="room_5" style="background-color: rgb(11, 162, 11); color: white">RM 5</div>
             <div class="office bg-primary text-white">Faculty Room</div>
             <div class="staircase-box">Staircase</div>
             <div class="office bg-primary text-white">ICT Office</div>

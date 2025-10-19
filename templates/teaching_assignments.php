@@ -22,7 +22,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
    <div class="d-flex">
 
       <!-- Sidebar -->
-      <div class="bg-dark text-white p-3" style="width:250px; height:100vh;">
+      <div class="bg-dark text-white p-3 position-fixed" style="width:250px; height:100vh;">
          <h4 class="fw-bold">ICAS</h4>
          <hr class="border-light">
          <h1 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h1>
@@ -30,11 +30,9 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
             <li class="nav-item"><a href="admin_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
             <li class="nav-item"><a href="manage_users.php" class="nav-link text-white">👤 Manage Users</a></li>
             <li class="nav-item"><a href="manage_sections.php" class="nav-link text-white">👥 Manage Sections</a></li>
-            <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white active">⚙️ Teaching
-                  Assignments</a></li>
+            <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white active">⚙️ Teaching Assignments</a></li>
             <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
-            <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a>
-            </li>
+            <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a></li>
             <li class="nav-item"><a href="classroom.php" class="nav-link text-white">🏛️ Classrooms</a></li>
          </ul>
          <hr class="border-light">
@@ -42,7 +40,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
       </div>
 
       <!-- Main Content -->
-      <div class="flex-grow-1">
+      <div class="flex-grow-1" style="margin-left:250px;">
          <!-- Topbar -->
          <div class="d-flex justify-content-between align-items-center border-bottom py-3 px-4 bg-white">
             <h4 class="mb-0">Welcome <?php echo $_SESSION["admin"]; ?>!</h4>
@@ -103,9 +101,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
                      <label class="form-label">Section</label>
                      <select class="form-select" id="section"></select>
                   </div>
-                  <div id="assignments_message">
-
-                  </div>
+                  <div id="assignments_message"></div>
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -119,6 +115,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
    <script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
    <script src="../jquery.js"></script>
    <script src="../crud/js/create.js"></script>
+   <script src="../crud/js/delete.js"></script>
    <script src="../crud/js/fetch.js"></script>
    <script>
       // instructor dropdown options

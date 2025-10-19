@@ -23,7 +23,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
     <div class="d-flex">
 
         <!-- Sidebar -->
-        <div class="bg-dark text-white p-3" style="width:265px; height:100vh;">
+        <div class="bg-dark text-white p-3 position-fixed" style="width:265px; height:100vh;">
             <h4 class="fw-bold">ICAS</h4>
             <hr class="border-light">
             <h1 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h1>
@@ -46,7 +46,8 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
         </div>
 
         <!-- Main Content -->
-        <div class="flex-grow-1">
+        <div class="flex-grow-1" style="margin-left:265px;">
+
             <!-- Topbar -->
             <div class="d-flex justify-content-between align-items-center border-bottom py-3 px-4 bg-white">
                 <h4 class="mb-0">Welcome <?php echo $_SESSION["admin"]; ?>!</h4>
@@ -223,7 +224,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
             $("#section").prop("disabled", false);
         } else if (user === "Instructor") {
             $("#section").prop("disabled", true);
-        } else if (user === "Admin"){
+        } else if (user === "Admin") {
             $("#section").prop("disabled", true);
         } else {
             $("#section").prop("disabled", false);
