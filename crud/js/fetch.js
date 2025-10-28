@@ -235,3 +235,35 @@ function fetch_courses() {
       courses_table.html(display_courses);
    });
 }
+
+function fetch_room_schedules(room_id) {
+   $.post("../crud/php/fetch_room_schedules.php", {room_id: room_id}, function(response) {
+      let room_schedule = JSON.parse(response);
+      let room_schedule_table = $("#room_table_schedule");
+      let display_room_schedule = "";
+
+      if (room_schedule.length > 0) {
+         room_schedule.forEach((room_schedules, index) => {
+            display_room_schedule += `<tr>
+               <td>${index + 1}</td>
+               <td>${room_schedules.day}</td>
+               <td>${room_schedules.room_name}</td>
+               <td>${room_schedules.section_name}</td>
+               <td>${room_schedules.course}</td>
+               <td>${room_schedules.instructor}</td>
+               <td>${room_schedules.time_start_formatted}</td>
+               <td>${room_schedules.time_end_formatted}</td>
+            </tr>`
+         })
+         room_schedule_table.html(display_room_schedule);
+      } else {
+         display_room_schedule = `<tr><td colspan="5" class="text-center text-muted"> - No Schedules - </td></tr>`;
+      }
+   });
+}
+
+function fetch_current_schedule(room_id) {
+   $.post("", {}, function(response) {
+      alert(response)
+   })
+}

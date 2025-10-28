@@ -67,7 +67,8 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
       <li class="nav-item"><a href="admin_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
       <li class="nav-item"><a href="manage_users.php" class="nav-link text-white">👤 Manage Users</a></li>
       <li class="nav-item"><a href="manage_sections.php" class="nav-link text-white">👥 Manage Sections</a></li>
-      <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching Assignments</a></li>
+      <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching Assignments</a>
+      </li>
       <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
       <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a></li>
       <li class="nav-item"><a href="classroom.php" class="nav-link text-white active">🏛️ Classrooms</a></li>
@@ -92,10 +93,14 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
           <h5 class="text-center fw-bold mb-3">Third Floor</h5>
           <div class="floor-layout">
             <div class="staircase-box">Staircase</div>
-            <div class="room" id="room_11" style="background-color: rgb(11, 162, 11); color: white">RM 11</div>
-            <div class="room" id="room_10" style="background-color: rgb(11, 162, 11); color: white">RM 10</div>
-            <div class="room" id="room_9" style="background-color: rgb(11, 162, 11); color: white">RM 9</div>
-            <div class="room" id="room_8" style="background-color: rgb(11, 162, 11); color: white">RM 8</div>
+            <div class="room room_11" id="Room 11" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 11</div>
+            <div class="room room_10" id="Room 10" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 10</div>
+            <div class="room room_9" id="Room 9" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 9</div>
+            <div class="room room_8" id="Room 8" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 8</div>
             <div class="staircase-box">Staircase</div>
             <div class="office bg-primary text-white">MIS Office</div>
           </div>
@@ -106,9 +111,12 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
           <h5 class="text-center fw-bold mb-3">Second Floor</h5>
           <div class="floor-layout">
             <div class="staircase-box">Staircase</div>
-            <div class="room" id="room_7" style="background-color: rgb(11, 162, 11); color: white">RM 7</div>
-            <div class="room" id="room_6" style="background-color: rgb(11, 162, 11); color: white">RM 6</div>
-            <div class="room" id="room_5" style="background-color: rgb(11, 162, 11); color: white">RM 5</div>
+            <div class="room room_7" id="Room 7" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 7</div>
+            <div class="room room_6" id="Room 6" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 6</div>
+            <div class="room room_5" id="Room 5" style="background-color: rgb(11, 162, 11); color: white"
+              data-bs-toggle="modal" data-bs-target="#room_schedules">RM 5</div>
             <div class="office bg-primary text-white">Faculty Room</div>
             <div class="staircase-box">Staircase</div>
             <div class="office bg-primary text-white">ICT Office</div>
@@ -119,20 +127,83 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
     </div>
   </div>
 
-  <script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    window.addEventListener("pageshow", function (event) {
-      if (event.persisted) {
-        window.location.reload();
-      }
-    });
-  </script>
+  <div class="modal modal-xl fade" id="room_schedules" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Room Schedules</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p> Current Class: </p>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th> No. </th>
+                  <th> Day </th>
+                  <th> Room No. </th>
+                  <th> Year & Section </th>
+                  <th> Course </th>
+                  <th> Instructor </th>
+                  <th> Time Start </th>
+                  <th> Time End </th>
+                </tr>
+              </thead>
+
+              <tbody id="room_table_schedule"></tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
 
+<script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 <script src="../jquery.js"></script>
 <script src="../crud/js/fetch.js"></script>
 <script>
+  //classroom event listeners
+  $(document).on('click', '.room_11', function () {
+    fetch_room_schedules("Room 11");
+  });
+
+  $(document).on('click', '.room_10', function () {
+    fetch_room_schedules("Room 10");
+  });
+
+  $(document).on('click', '.room_9', function () {
+    fetch_room_schedules("Room 9");
+  });
+
+  $(document).on('click', '.room_8', function () {
+    fetch_room_schedules("Room 8");
+  });
+
+  $(document).on('click', '.room_7', function () {
+    fetch_room_schedules("Room 7");
+  });
+
+  $(document).on('click', '.room_6', function () {
+    fetch_room_schedules("Room 6");
+  });
+
+  $(document).on('click', '.room_5', function () {
+    fetch_room_schedules("Room 5");
+  });
+
+  //refresh classroom status every 7 seconds
   setInterval(fetch_room_status, 7000);
   fetch_room_status();
+
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  });
 </script>
