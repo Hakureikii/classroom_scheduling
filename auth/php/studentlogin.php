@@ -3,19 +3,22 @@ session_start();
 include_once("../../connection.php");
 $email = $_POST["email"];
 $password = $_POST["password"];
-$stmt = $conn->prepare("SELECT * FROM students WHERE email = :email AND password = :password");
+$stmt = $conn->prepare("SELECT * FROM students WHERE email = :email");
 $stmt->execute([
     ":email" => $email,
-    ":password" => $password,
 ]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (password_verify($password, $student["password"])) {
-    $_SESSION["studentID"] = $student["student_id"];
-    $_SESSION["studentName"] = $student["first_name"];
-    echo "granted";
+if ($student == false) {
+    echo "invalid";
 } else {
-    echo "err";
-};
+    if (password_verify($password, $student['password'])) {
+        $_SESSION["studentID"] = $student["student_id"];
+        $_SESSION["studentName"] = $student["first_name"];
+        echo "granted";
+    } else {
+        echo "err";
+    }
+}
 
 ?>

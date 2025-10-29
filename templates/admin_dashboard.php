@@ -20,7 +20,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
 
 <body class="bg-light">
    <div class="d-flex">
-      
+
       <!-- Sidebar -->
       <div class="bg-dark text-white p-3" style="width:250px; height:100vh;">
          <h4 class="fw-bold">ICAS</h4>
@@ -30,9 +30,11 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
             <li class="nav-item"><a href="admin_dashboard.php" class="nav-link text-white active">🏠 Dashboard</a></li>
             <li class="nav-item"><a href="manage_users.php" class="nav-link text-white">👤 Manage Users</a></li>
             <li class="nav-item"><a href="manage_sections.php" class="nav-link text-white">👥 Manage Sections</a></li>
-            <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching Assignments</a></li>
+            <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching
+                  Assignments</a></li>
             <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
-            <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a></li>
+            <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a>
+            </li>
             <li class="nav-item"><a href="classroom.php" class="nav-link text-white">🏛️ Classrooms</a></li>
          </ul>
          <hr class="border-light">
@@ -58,15 +60,18 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
       </div>
    </div>
 
-   <script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-   <script src="../jquery.js"></script>
-   <script>
-      // Reload when back button is pressed
-      window.addEventListener("pageshow", function (event) {
-         if (event.persisted) {
-            window.location.reload();
-         }
-      });
-   </script>
+
 </body>
+
 </html>
+
+<script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../jquery.js"></script>
+<script>
+   // Reload when back button is pressed
+   window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+         window.location.reload();
+      }
+   });
+</script>

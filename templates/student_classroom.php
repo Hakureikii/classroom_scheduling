@@ -2,8 +2,8 @@
 session_start();
 include_once("../connection.php");
 
-if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
-  header("Location: ../auth/admin.php");
+if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
+  header("Location: ../index.php");
   exit();
 }
 ?>
@@ -64,17 +64,13 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
     <hr class="border-light">
     <h6 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h6>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item"><a href="admin_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
-      <li class="nav-item"><a href="manage_users.php" class="nav-link text-white">👤 Manage Users</a></li>
-      <li class="nav-item"><a href="manage_sections.php" class="nav-link text-white">👥 Manage Sections</a></li>
-      <li class="nav-item"><a href="teaching_assignments.php" class="nav-link text-white">⚙️ Teaching Assignments</a>
-      </li>
-      <li class="nav-item"><a href="manage_courses.php" class="nav-link text-white">📖 Manage Courses</a></li>
-      <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white">🗓️ Manage Schedules</a></li>
-      <li class="nav-item"><a href="classroom.php" class="nav-link text-white active">🏛️ Classrooms</a></li>
+      <li class="nav-item"><a href="student_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
+      <li class="nav-item"><a href="" class="nav-link text-white"> 📚 My Courses </a></li>
+      <li class="nav-item"><a href="" class="nav-link text-white"> 🗓️ My Schedules </a></li>
+      <li class="nav-item"><a href="student_classroom.php" class="nav-link text-white active">🏛️ Classrooms </a></li>
     </ul>
     <hr class="border-light">
-    <a href="../auth/php/logout_admin.php" class="btn btn-outline-light w-100">🚪 Logout</a>
+    <a href="../auth/php/logout.php" class="btn btn-outline-light w-100">🚪 Logout</a>
   </div>
 
   <div class="main-content">
@@ -150,7 +146,6 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
                   <th> Time End </th>
                 </tr>
               </thead>
-
               <tbody id="room_table_schedule"></tbody>
             </table>
           </div>
@@ -167,6 +162,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
 <script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 <script src="../jquery.js"></script>
 <script src="../crud/js/fetch.js"></script>
+
 <script>
   //classroom event listeners
   $(document).on('click', '.room_11', function () {

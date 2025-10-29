@@ -263,7 +263,19 @@ function fetch_room_schedules(room_id) {
 }
 
 function fetch_current_schedule(room_id) {
-   $.post("", {}, function(response) {
-      alert(response)
-   })
+   $.post("../crud/php/fetch_current_schedule.php", {room_id: room_id}, function(response) {
+      let current_schedule = JSON.parse(response);
+      let current_schedule_placeholder = $("#current_schedule");
+      let display_current_schedule = "";
+
+      if (current_schedule.length > 0) {
+         current_schedule.forEach(curr_sched => {
+            display_current_schedule = `Current Class: ${curr_sched.section_name} Instructor: ${curr_sched.instructor}`
+         })
+      } else {
+         display_current_schedule = "Currently Vacant";
+      }
+      current_schedule_placeholder.html(display_current_schedule);
+
+   });
 }

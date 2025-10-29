@@ -7,7 +7,7 @@ $stmt = $conn -> prepare("SELECT
    rm.room_name,
    s.section_name,
    CONCAT(i.last_name, ', ', i.first_name) as instructor,
-   CONCAT(c.course_code, ': ', c.descriptive_title) as course,n
+   CONCAT(c.course_code, ': ', c.descriptive_title) as course,
    DATE_FORMAT(sch.time_start, '%l:%i %p') AS time_start_formatted, 
    DATE_FORMAT(sch.time_end, '%l:%i %p') AS time_end_formatted,
    CASE 

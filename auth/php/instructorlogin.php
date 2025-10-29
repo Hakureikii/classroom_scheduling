@@ -10,12 +10,18 @@ $stmt->execute([
 ]);
 $instructor = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($instructor === false) {
-    echo "err";
+if (password_verify($password, $instructor["password"])) {
+    if ($instructor === false) {
+        echo "err";
+    } else {
+        $_SESSION["instructorID"] = $instructor["instructor_id"];
+        $_SESSION["instructorName"] = $instructor["first_name"];
+        echo "granted";
+    } 
 } else {
-    $_SESSION["instructorID"] = $instructor["instructor_id"];
-    $_SESSION["instructorName"] = $instructor["first_name"];
-    echo "granted";
+    echo "invalid account";
 }
+
+
 
 ?>

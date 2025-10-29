@@ -21,7 +21,7 @@ function login(email, password, role) {
                         let err = document.getElementById("error-message");
                         err.innerHTML = '<p class="text-danger fs-6 fw-light"> Invalid email or password!<p>';
                     } else {
-                        window.location.href = "templates/students/student_dashboard.php";
+                        window.location.href = "templates/student_dashboard.php";
                     };
                 })
             //instructor login
@@ -39,7 +39,7 @@ function login(email, password, role) {
                         let err = document.getElementById("error-message");
                         err.innerHTML = '<p class="text-danger fs-6 fw-light"> Invalid email or password!<p>';
                     } else {
-                        window.location.href = "templates/instructors/instructor_dashboard.php";
+                        window.location.href = "templates/instructor_dashboard.php";
                     };
                 })
         }
