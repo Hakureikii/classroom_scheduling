@@ -65,8 +65,8 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
     <h6 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h6>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item"><a href="student_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
-      <li class="nav-item"><a href="" class="nav-link text-white"> 📚 My Courses </a></li>
-      <li class="nav-item"><a href="" class="nav-link text-white"> 🗓️ My Schedules </a></li>
+      <li class="nav-item"><a href="student_courses.php" class="nav-link text-white"> 📚 My Courses </a></li>
+      <li class="nav-item"><a href="student_schedules.php" class="nav-link text-white"> 🗓️ My Schedules </a></li>
       <li class="nav-item"><a href="student_classroom.php" class="nav-link text-white active">🏛️ Classrooms </a></li>
     </ul>
     <hr class="border-light">

@@ -279,3 +279,28 @@ function fetch_current_schedule(room_id) {
 
    });
 }
+
+
+function fetch_students_schedules() {
+   $.get("../crud/php/fetch_students_schedules.php", function(response) {
+      let student_schedule = JSON.parse(response);
+      let student_schedule_table = $("#student_schedule_table");
+      let display_student_schedules = "";
+
+      if (student_schedule.length > 0) {
+         student_schedule.forEach((st_sch, index) => {
+            display_student_schedules += `<tr>
+               <td>${index +1}</td>
+               <td>${st_sch.day}</td>
+               <td>${st_sch.room_name}</td>
+               <td>${st_sch.section_name}</td>
+               <td>${st_sch.course}</td>
+               <td>${st_sch.instructor}</td>
+               <td>${st_sch.time_start_formatted}</td>
+               <td>${st_sch.time_end_formatted}</td>
+            </tr>`
+         });
+         student_schedule_table.html(display_student_schedules);
+      }
+   })
+}

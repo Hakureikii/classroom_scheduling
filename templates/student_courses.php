@@ -26,8 +26,9 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
             <hr class="border-light">
             <h6 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h6>
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="student_dashboard.php" class="nav-link text-white active">🏠 Dashboard</a></li>
-                <li class="nav-item"><a href="student_courses.php" class="nav-link text-white">📚 My Courses</a></li>
+                <li class="nav-item"><a href="student_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
+                <li class="nav-item"><a href="student_courses.php" class="nav-link text-white active">📚 My Courses</a>
+                </li>
                 <li class="nav-item"><a href="student_schedules.php" class="nav-link text-white">🗓️ My Schedules </a></li>
                 <li class="nav-item"><a href="student_classroom.php" class="nav-link text-white">🏛️ Classrooms </a></li>
             </ul>
@@ -49,21 +50,23 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
 
             <!-- Content Area -->
             <div class="p-4">
-                <p class="lead">This is your student dashboard. Use the menu on the left to navigate.</p>
+                <p class="lead">This are your courses.</p>
             </div>
         </div>
     </div>
 
-    <script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../jquery.js"></script>
-    <script>
-        // Reload when back button is pressed
-        window.addEventListener("pageshow", function (event) {
-            if (event.persisted) {
-                window.location.reload();
-            }
-        });
-    </script>
+
 </body>
 
 </html>
+
+<script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../jquery.js"></script>
+<script>
+    // Reload when back button is pressed
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });
+</script>
