@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2025 at 02:07 PM
+-- Generation Time: Oct 30, 2025 at 07:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -133,13 +133,13 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `room_name`, `room_type`) VALUES
-(1, 'room_5', 'Lecture Room'),
-(2, 'room_6', 'Lecture Room'),
-(3, 'room_7', 'Lecture Room'),
-(4, 'room_8', 'Laboratory'),
-(5, 'room_9', 'Laboratory'),
-(6, 'room_10', 'Laboratory'),
-(7, 'room_11', 'Laboratory');
+(1, 'Room 5', 'Lecture Room'),
+(2, 'Room 6', 'Lecture Room'),
+(3, 'Room 7', 'Lecture Room'),
+(4, 'Room 8', 'Laboratory'),
+(5, 'Room 9', 'Laboratory'),
+(6, 'Room 10', 'Laboratory'),
+(7, 'Room 11', 'Laboratory');
 
 -- --------------------------------------------------------
 
@@ -332,7 +332,9 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `first_name`, `middle_name`, `last_name`, `sex`, `email`, `password`, `section_id`) VALUES
-(3, 'Kenneth', 'Alfonso', 'Casaquite', 'Male', 'casaquitekenneth@gmail.com', '$2y$10$Oxp/XmvDznSBfZDrLNWGvOgYyGGUanoTJS6CSJSR6XW7NTREM8F5G', 8);
+(3, 'Kenneth', 'Alfonso', 'Casaquite', 'Male', 'casaquitekenneth@gmail.com', '$2y$10$Oxp/XmvDznSBfZDrLNWGvOgYyGGUanoTJS6CSJSR6XW7NTREM8F5G', 8),
+(4, 'Cathlene', 'Lilam', 'Arana', 'Female', 'arana@gmail.com', '$2y$10$rKuoP9iF5KdJ5N3QUh4J2uzulNkZHtKfPx9//0ssGrsOlPR9Xm7jS', 8),
+(5, 'Sean Ivan', 'Andales', 'Gimeno', 'Male', 'gimeno@gmail.com', '$2y$10$epm0F.go6n//zCjlIR4rIekpR29SlQB/PXb4teytFO9iee/CgAthO', 9);
 
 -- --------------------------------------------------------
 
@@ -523,7 +525,7 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `teaching_assignments`
