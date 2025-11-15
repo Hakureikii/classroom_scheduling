@@ -304,3 +304,7 @@ function fetch_students_schedules() {
       }
    })
 }
+
+function sakfjsdlkfj() {
+   
+}
