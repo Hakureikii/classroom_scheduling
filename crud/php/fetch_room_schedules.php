@@ -20,8 +20,9 @@ INNER JOIN teaching_assignments as ta ON ta.assignment_id = sch.assignment_id
 INNER JOIN courses as c ON c.course_id = ta.course_id
 INNER JOIN sections as s ON s.section_id = ta.section_id
 INNER JOIN instructors as i ON i.instructor_id = ta.instructor_id
-WHERE DAYNAME(NOW()) = sch.day AND room_name = :room_id
-ORDER BY sch.time_start");
+AND room_name = :room_id
+ORDER BY FIELD(sch.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), sch.time_start
+");
 $stmt -> execute([
     ":room_id" => $room_id
 ]);

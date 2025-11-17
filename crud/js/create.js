@@ -175,3 +175,26 @@ function add_courses(course_code, descriptive_title, units) {
          }
       })
 }
+
+
+function add_section(section_name) {
+   $.post("../crud/php/add_section.php", {section_name: section_name}, function(section_response) {
+      alert(section_response);
+   });
+}
+
+
+function add_session(room, date, assignment, session_type, time_start, time_end) {
+   $.post("../crud/php/add_session.php", 
+      {
+         room: room,
+         date: date,
+         assignment: assignment,
+         session_type: session_type,
+         time_start: time_start,
+         time_end: time_end,
+
+      }, function(response) {
+         alert(response);
+   });
+}

@@ -210,7 +210,9 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
       });
 
 
-      $(document).on('change', '#select_instructors', fetch_schedules)
+      $(document).on('change', '#select_instructors', function () {
+         fetch_schedules();
+      })
       fetch_schedules();
 
 

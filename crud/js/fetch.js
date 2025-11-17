@@ -305,6 +305,35 @@ function fetch_students_schedules() {
    })
 }
 
-function sakfjsdlkfj() {
-   
+
+function fetch_instructor_schedules() {
+   $.post("../crud/php/fetch_instructor_schedules.php", { assignment_id: $("#assignment").val() },
+      function (response) {
+         let i_schedules = JSON.parse(response);
+         let i_schedule_table = document.getElementById("schedule_table");
+         let display_i_schedules = "";
+         if (i_schedules.msg === "no schedules") {
+            display_i_schedules +=
+               `<tr>
+               <td colspan = 9 class="text-center"> - NO SCHEDULES YET - </td>
+            </tr>`
+            i_schedule_table.innerHTML = display_schedules;
+
+         } else {
+            for (let i = 0; i < i_schedules.length; i++) {
+               display_i_schedules +=
+                  `<tr>
+                  <td> ${i + 1} </td>
+                  <td> ${i_schedules[i].day} </td>
+                  <td> ${i_schedules[i].room_name} </td>
+                  <td> ${i_schedules[i].section_name} </td>
+                  <td> ${i_schedules[i].course_code} </td>
+                  <td> ${i_schedules[i].instructor} </td>
+                  <td> ${i_schedules[i].time_start_formatted} </td>
+                  <td> ${i_schedules[i].time_end_formatted} </td>
+               </tr>`
+            }
+            i_schedule_table.innerHTML = display_i_schedules;
+         }
+      })
 }

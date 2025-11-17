@@ -1,8 +1,17 @@
 <?php
+session_start();
 include_once("../../connection.php");
-$instructor_id = $_POST["instructor_id"];
+$instructor_id = $_SESSION["instructorID"];
+$assignment_id = $_POST["assignment_id"];
 
-if ($instructor_id !== "") {
+// RETRIEVE SECTION
+$fetch = $conn -> prepare("SELECT section_id FROM teaching_assignments WHERE assignment_id = :assignment_id");
+$fetch -> execute([
+    ":assignment_id" => $assignment_id
+]);
+$section = $fetch -> fetch(PDO::FETCH_COLUMN);
+
+if ($assignment_id !== "") {
    $stmt = $conn->prepare("SELECT 
     i.instructor_id,
     sch.schedule_id, 
@@ -19,11 +28,12 @@ INNER JOIN sections AS s ON s.section_id = ta.section_id
 INNER JOIN courses AS c ON c.course_id = ta.course_id
 INNER JOIN schedules AS sch ON sch.assignment_id = ta.assignment_id
 INNER JOIN rooms AS rm ON sch.room_id = rm.room_id
-WHERE i.instructor_id = :instructor_id
+WHERE i.instructor_id = :instructor_id AND s.section_id = :section_id
 ORDER BY FIELD(sch.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), sch.time_start");
 
    $stmt->execute([
-      ":instructor_id" => $instructor_id
+      ":instructor_id" => $instructor_id,
+      ":section_id" => $section,
    ]);
    $schedules = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -44,9 +54,12 @@ INNER JOIN sections AS s ON s.section_id = ta.section_id
 INNER JOIN courses AS c ON c.course_id = ta.course_id
 INNER JOIN schedules AS sch ON sch.assignment_id = ta.assignment_id
 INNER JOIN rooms AS rm ON sch.room_id = rm.room_id
+WHERE i.instructor_id = :instructor_id
 ORDER BY FIELD(sch.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), sch.time_start");
 
-   $stmt2->execute();
+   $stmt2->execute([
+    ":instructor_id" => $instructor_id
+   ]);
    $all_schedules = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 }
 

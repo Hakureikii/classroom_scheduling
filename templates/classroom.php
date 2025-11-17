@@ -2,6 +2,16 @@
 session_start();
 include_once("../connection.php");
 
+if (isset($_SESSION["admin_ID"])) {
+  $session_user = $_SESSION["admin_ID"];
+
+} else if (isset($_SESSION["studentID"])) {
+  $session_user = $_SESSION["studentID"];
+
+} else {
+  header("Location: ../index.php");
+}
+
 if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
   header("Location: ../auth/admin.php");
   exit();

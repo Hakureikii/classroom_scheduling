@@ -1,16 +1,9 @@
 <?php
 session_start();
-
-// Prevent caching
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-
-if (!isset($_SESSION["instructorID"]) || !isset($_SESSION["instructorName"])) {
+if (!isset($_SESSION["instructorID"])) {
     header("Location: ../index.php");
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -19,30 +12,57 @@ if (!isset($_SESSION["instructorID"]) || !isset($_SESSION["instructorName"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dashboard </title>
+    <title>ICAS - Instructor Dashboard</title>
     <link rel="icon" href="../assets/icons/web-icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../styles/instructor_dashboard.css">
     <link rel="stylesheet" href="../styles/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
 </head>
 
-<body>
-    <h1> <?php echo $_SESSION["instructorName"] ?> </h1>
-    <a href="../../auth/php/logout.php"> 🚪Logout </a>
+<body class="bg-light">
+    <div class="d-flex">
 
+        <!-- Sidebar -->
+        <div class="bg-dark text-white p-3" style="width:250px; height:100vh;">
+            <h4 class="fw-bold">ICAS</h4>
+            <hr class="border-light">
+            <h6 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h6>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item"><a href="instructor_dashboard.php" class="nav-link text-white active">🏠 Dashboard</a></li>
+                <li class="nav-item"><a href="instructor_schedules.php" class="nav-link text-white">🗓️ My Schedules</a></li>
+                <li class="nav-item"><a href="instructor_classroom.php" class="nav-link text-white">🏛️ Classrooms </a></li>
+            </ul>
+            <hr class="border-light">
+            <a href="../../auth/php/logout.php" class="btn btn-outline-light w-100">🚪 Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1">
+            <!-- Topbar -->
+            <div class="d-flex justify-content-between align-items-center border-bottom py-3 px-4 bg-white">
+                <h4 class="mb-0">Welcome <?php echo $_SESSION["instructorName"]; ?>!</h4>
+                <div class="d-flex align-items-center gap-2">
+                    <img src="../assets/icons/user.png" alt="Profile" class="rounded-circle" width="40">
+                    <span><?php echo $_SESSION["instructorName"]; ?></span>
+                    <a href="../auth/php/logout.php" class="btn btn-outline-dark btn-sm">Logout</a>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-4">
+                <p class="lead">This is your dashboard. Use the menu on the left to navigate.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../jquery.js"></script>
+    <script>
+        // Reload when back button is pressed
+        window.addEventListener("pageshow", function (event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+    </script>
 </body>
 
 </html>
-
-<script>
-    window.addEventListener("pageshow", function (event) {
-        if (event.persisted) {
-            window.location.reload();
-        }
-    });
-</script>

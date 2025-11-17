@@ -15,6 +15,7 @@ if ($student == false) {
     if (password_verify($password, $student['password'])) {
         $_SESSION["studentID"] = $student["student_id"];
         $_SESSION["studentName"] = $student["first_name"];
+        $_SESSION["studentSection"] = $student["section_id"];
         echo "granted";
     } else {
         echo "err";

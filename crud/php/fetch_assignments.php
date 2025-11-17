@@ -3,7 +3,7 @@ include_once("../../connection.php");
 
    $stmt = $conn->prepare("SELECT 
       ta.assignment_id,
-      CONCAT(s.section_name, ' ', c.course_code) AS course_section,
+      CONCAT(s.section_name, ' ', c.course_code, ' ', i.first_name, ' ', i.last_name) AS course_section,
       CONCAT(i.last_name, ', ', i.first_name, ' ', i.middle_name) AS instructor_name,
       s.section_name,
       c.course_code,

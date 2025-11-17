@@ -60,7 +60,6 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
       </div>
    </div>
 
-
 </body>
 
 </html>

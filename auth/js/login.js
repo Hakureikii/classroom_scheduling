@@ -33,6 +33,7 @@ function login(email, password, role) {
 
                 },
                 function (response) {
+                    alert(response);
                     if (response === "err") {
                         email_clear;
                         password_clear;
