@@ -51,3 +51,10 @@ $(document).on('click', '.course-delete-btn', function() {
         fetch_courses();
     })
 })
+
+
+// archive the ended sessions
+function archive_sessions() {
+    $.get("../crud/php/archive_sessions.php", function(response) {
+    });
+}

@@ -15,6 +15,7 @@ if (!isset($_SESSION["instructorID"])) {
     <title>ICAS - Instructor Dashboard</title>
     <link rel="icon" href="../assets/icons/web-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body class="bg-light">
@@ -26,12 +27,40 @@ if (!isset($_SESSION["instructorID"])) {
             <hr class="border-light">
             <h6 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h6>
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="instructor_dashboard.php" class="nav-link text-white active">🏠 Dashboard</a></li>
-                <li class="nav-item"><a href="instructor_schedules.php" class="nav-link text-white">🗓️ My Schedules</a></li>
-                <li class="nav-item"><a href="instructor_classroom.php" class="nav-link text-white">🏛️ Classrooms </a></li>
+                <li class="nav-item">
+                    <a href="instructor_dashboard.php" class="nav-link text-white active">
+                        <i class="bi-house me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="instructor_schedules.php" class="nav-link text-white">
+                        <i class="bi-calendar me-2"></i> My Schedules
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="section_schedules.php" class="nav-link text-white">
+                        <i class="bi-diagram-3 me-2"></i> Section Schedules
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="instructor_classroom.php" class="nav-link text-white">
+                        <i class="bi-building me-2"></i> Classrooms
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="instructor_sessions.php" class="nav-link text-white">
+                        <i class="bi-people me-2"></i> Sessions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="session_history.php" class="nav-link text-white">
+                        <i class="bi-clock-history me-2"></i> Session History
+                    </a>
+                </li>
             </ul>
             <hr class="border-light">
-            <a href="../../auth/php/logout.php" class="btn btn-outline-light w-100">🚪 Logout</a>
+            <a href="../auth/php/logout.php" class="btn btn-outline-light w-100"><i class="bi-arrow-bar-left"></i>
+                Logout</a>
         </div>
 
         <!-- Main Content -->

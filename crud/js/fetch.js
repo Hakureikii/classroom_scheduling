@@ -237,7 +237,7 @@ function fetch_courses() {
 }
 
 function fetch_room_schedules(room_id) {
-   $.post("../crud/php/fetch_room_schedules.php", {room_id: room_id}, function(response) {
+   $.post("../crud/php/fetch_room_schedules.php", { room_id: room_id }, function (response) {
       let room_schedule = JSON.parse(response);
       let room_schedule_table = $("#room_table_schedule");
       let display_room_schedule = "";
@@ -253,6 +253,7 @@ function fetch_room_schedules(room_id) {
                <td>${room_schedules.instructor}</td>
                <td>${room_schedules.time_start_formatted}</td>
                <td>${room_schedules.time_end_formatted}</td>
+               <td>${room_schedules.schedule_type}</td>
             </tr>`
          })
          room_schedule_table.html(display_room_schedule);
@@ -263,7 +264,7 @@ function fetch_room_schedules(room_id) {
 }
 
 function fetch_current_schedule(room_id) {
-   $.post("../crud/php/fetch_current_schedule.php", {room_id: room_id}, function(response) {
+   $.post("../crud/php/fetch_current_schedule.php", { room_id: room_id }, function (response) {
       let current_schedule = JSON.parse(response);
       let current_schedule_placeholder = $("#current_schedule");
       let display_current_schedule = "";
@@ -282,7 +283,7 @@ function fetch_current_schedule(room_id) {
 
 
 function fetch_students_schedules() {
-   $.get("../crud/php/fetch_students_schedules.php", function(response) {
+   $.post("../crud/php/fetch_students_schedules.php", {day : $("#select_day").val()}, function (response) {
       let student_schedule = JSON.parse(response);
       let student_schedule_table = $("#student_schedule_table");
       let display_student_schedules = "";
@@ -290,7 +291,7 @@ function fetch_students_schedules() {
       if (student_schedule.length > 0) {
          student_schedule.forEach((st_sch, index) => {
             display_student_schedules += `<tr>
-               <td>${index +1}</td>
+               <td>${index + 1}</td>
                <td>${st_sch.day}</td>
                <td>${st_sch.room_name}</td>
                <td>${st_sch.section_name}</td>
@@ -298,6 +299,7 @@ function fetch_students_schedules() {
                <td>${st_sch.instructor}</td>
                <td>${st_sch.time_start_formatted}</td>
                <td>${st_sch.time_end_formatted}</td>
+               <td>${st_sch.type}</td>
             </tr>`
          });
          student_schedule_table.html(display_student_schedules);
@@ -317,7 +319,7 @@ function fetch_instructor_schedules() {
                `<tr>
                <td colspan = 9 class="text-center"> - NO SCHEDULES YET - </td>
             </tr>`
-            i_schedule_table.innerHTML = display_schedules;
+            i_schedule_table.innerHTML = display_i_schedules;
 
          } else {
             for (let i = 0; i < i_schedules.length; i++) {
@@ -336,4 +338,106 @@ function fetch_instructor_schedules() {
             i_schedule_table.innerHTML = display_i_schedules;
          }
       })
+}
+
+
+function handled_section_schedules() {
+   $.post("../crud/php/handled_section_schedules.php", { assignment_id: $("#assignment").val() }, function (response) {
+      let s_schedules = JSON.parse(response);
+      let s_schedule_table = document.getElementById("section_schedule_table");
+      let display_s_schedules = "";
+      if (s_schedules.msg === "no schedules") {
+         display_s_schedules +=
+            `<tr>
+               <td colspan = 9 class="text-center"> - NO SCHEDULES YET - </td>
+            </tr>`
+         s_schedule_table.innerHTML = display_s_schedules;
+
+      } else {
+         for (let i = 0; i < s_schedules.length; i++) {
+            display_s_schedules +=
+               `<tr>
+                  <td> ${i + 1} </td>
+                  <td> ${s_schedules[i].day} </td>
+                  <td> ${s_schedules[i].room_name} </td>
+                  <td> ${s_schedules[i].section_name} </td>
+                  <td> ${s_schedules[i].course_code} </td>
+                  <td> ${s_schedules[i].instructor} </td>
+                  <td> ${s_schedules[i].time_start_formatted} </td>
+                  <td> ${s_schedules[i].time_end_formatted} </td>
+               </tr>`
+         }
+         s_schedule_table.innerHTML = display_s_schedules;
+      }
+   });
+}
+
+
+function fetch_sessions() {
+   $.get("../crud/php/fetch_sessions.php", function(response) {
+      let sessions = JSON.parse(response);
+      let display_session = "";
+
+      sessions.forEach((session, index) => {
+         display_session += `<tr>
+            <td>${index + 1}</td>
+            <td>${session.session_day}</td>
+            <td>${session.date_issued}</td>
+            <td>${session.room_name}</td>
+            <td>${session.section_name}</td>
+            <td>${session.session_type}</td>
+            <td>${session.descriptive_title}</td>
+            <td>${session.instructor}</td>
+            <td>${session.time_start_formatted}</td>
+            <td>${session.time_end_formatted}</td>
+            <td>${session.session_type}</td>
+         </tr>`
+      })
+      $("#instructor_session_table").html(display_session);
+   });
+}
+
+
+function fetch_session_history() {
+   $.get("../crud/php/fetch_session_history.php", function(response) {
+      let sessions_history = JSON.parse(response);
+      let display_session_history = "";
+
+      sessions_history.forEach((session, index) => {
+         display_session_history += `<tr>
+            <td>${index + 1}</td>
+            <td>${session.session_day}</td>
+            <td>${session.date_issued}</td>
+            <td>${session.room_name}</td>
+            <td>${session.section_name}</td>
+            <td>${session.session_type}</td>
+            <td>${session.descriptive_title}</td>
+            <td>${session.instructor}</td>
+            <td>${session.time_start_formatted}</td>
+            <td>${session.time_end_formatted}</td>
+            <td>${session.session_type}</td>
+         </tr>`
+      })
+      $("#session_history_table").html(display_session_history);
+   });
+}
+
+
+function fetch_student_courses() {
+
+   $.get("../crud/php/fetch_student_courses.php", function(response) {
+      let student_courses = JSON.parse(response);
+      let display_student_courses = "";
+      
+      student_courses.forEach((course, index) => {
+         display_student_courses += `<tr>
+            <td> ${index + 1} </td>
+            <td> ${course.course_code} </td>
+            <td> ${course.descriptive_title} </td>
+            <td> ${course.instructor} </td>
+
+         </tr>`
+      });
+      $("#section_courses_table").html(display_student_courses);
+   });
 }

@@ -36,13 +36,14 @@ $result = $overlap->fetchAll(PDO::FETCH_ASSOC);
 echo json_encode($result);
 
 if ($result === []) {
-   $stmt = $conn->prepare("INSERT INTO schedules(room_id, assignment_id, day, time_start, time_end) VALUES(:room_no, :course_assignment, :day, :new_start_time, :new_end_time)");
+   $stmt = $conn->prepare("INSERT INTO schedules(room_id, assignment_id, day, time_start, time_end, type) VALUES(:room_no, :course_assignment, :day, :new_start_time, :new_end_time, :type)");
    $stmt->execute([
       ":room_no" => $room_no,
       ":course_assignment" => $course_assignment,
       ":day" => $day,
       ":new_start_time" => $new_start_time,
       ":new_end_time" => $new_end_time,
+      ":type" => "Regular",
    ]);
    echo "success";
 } else { //Overlapping schedule preventing insert

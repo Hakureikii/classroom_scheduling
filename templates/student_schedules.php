@@ -15,6 +15,7 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
     <title>ICAS - Student Dashboard</title>
     <link rel="icon" href="../assets/icons/web-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
         /* Keep sidebar fixed like admin layout */
         body {
@@ -41,7 +42,8 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
 
         /* Match admin layout spacing (small padding on sides) */
         .content-wrapper {
-            padding: 2rem 2rem; /* only a bit of space on sides */
+            padding: 2rem 2rem;
+            /* only a bit of space on sides */
         }
     </style>
 </head>
@@ -55,13 +57,34 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
             <hr class="border-light">
             <h6 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h6>
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="student_dashboard.php" class="nav-link text-white">🏠 Dashboard</a></li>
-                <li class="nav-item"><a href="student_courses.php" class="nav-link text-white">📚 My Courses</a></li>
-                <li class="nav-item"><a href="student_schedules.php" class="nav-link text-white active">🗓️ My Schedules</a></li>
-                <li class="nav-item"><a href="student_classroom.php" class="nav-link text-white">🏛️ Classrooms</a></li>
+                <li class="nav-item">
+                    <a href="student_dashboard.php" class="nav-link text-white">
+                        <i class="bi-house me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="student_courses.php" class="nav-link text-white">
+                        <i class="bi-journal-bookmark me-2"></i> My Courses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="student_schedules.php" class="nav-link text-white active">
+                        <i class="bi-calendar me-2"></i> My Schedules
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="student_classroom.php" class="nav-link text-white">
+                        <i class="bi-building me-2"></i> Classrooms
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="student_sessions.php" class="nav-link text-white">
+                        <i class="bi-people me-2"></i> Sessions
+                    </a>
+                </li>
             </ul>
             <hr class="border-light">
-            <a href="../../auth/php/logout.php" class="btn btn-outline-light w-100">🚪 Logout</a>
+            <a href="../../auth/php/logout.php" class="btn btn-outline-light w-100"><i class="bi-arrow-bar-left"></i> Logout</a>
         </div>
 
         <!-- Main Content -->
@@ -84,12 +107,12 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
                         Select Day:
                         <select name="" id="select_day" class="ms-2 me-2 form-select-sm">
                             <option value=""> - Select Day -</option>
-                            <option value=""> Monday </option>
-                            <option value=""> - Select Day -</option>
-                            <option value=""> - Select Day -</option>
-                            <option value=""> - Select Day -</option>
-                            <option value=""> - Select Day -</option>
-                            <option value=""> - Select Day -</option>
+                            <option value="Monday"> Monday </option>
+                            <option value="Tuesday"> Tuesday </option>
+                            <option value="Wednesday"> Wednesday </option>
+                            <option value="Thursday"> Thursday </option>
+                            <option value="Friday"> Friday </option>
+                            <option value="Saturday"> Saturday </option>
                         </select>
                     </div>
                 </div>
@@ -107,6 +130,7 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
                                 <th style="width: 20%;">Instructor</th>
                                 <th style="width: 10%;">Time Start</th>
                                 <th style="width: 10%;">Time End</th>
+                                <th style="width: 10%;">Type</th>
                             </tr>
                         </thead>
                         <tbody id="student_schedule_table"></tbody>
@@ -124,6 +148,10 @@ if (!isset($_SESSION["studentID"]) || !isset($_SESSION["studentName"])) {
 <script src="../jquery.js"></script>
 <script src="../crud/js/fetch.js"></script>
 <script>
+
+    $(document).on('change', '#select_day', function() {
+        fetch_students_schedules();
+    })
     fetch_students_schedules();
 
     // Reload when back button is pressed

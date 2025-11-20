@@ -23,7 +23,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
    <div class="d-flex">
 
       <!-- Sidebar -->
-      <div class="bg-dark text-white p-3" style="width:250px; height:100vh;">
+      <div class="bg-dark text-white p-3 position-fixed" style="width:250px; height:100vh;">
          <h4 class="fw-bold">ICAS</h4>
          <hr class="border-light">
          <h1 class="text-uppercase text-white small fw-bold mb-3">☰ Menu</h1>
@@ -37,6 +37,7 @@ if (!isset($_SESSION["admin_ID"]) || !isset($_SESSION["admin"])) {
             <li class="nav-item"><a href="manage_schedules.php" class="nav-link text-white active">🗓️ Manage
                   Schedules</a></li>
             <li class="nav-item"><a href="classroom.php" class="nav-link text-white">🏛️ Classrooms</a></li>
+            
          </ul>
          <hr class="border-light">
          <a href="../auth/php/logout_admin.php" class="btn btn-outline-light w-100">🚪 Logout</a>

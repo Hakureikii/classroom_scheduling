@@ -37,7 +37,8 @@ ORDER BY FIELD(sch.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
     c.course_code, 
     CONCAT(i.last_name, ', ', i.first_name) AS instructor, 
     DATE_FORMAT(sch.time_start, '%l:%i %p') AS time_start_formatted, 
-    DATE_FORMAT(sch.time_end, '%l:%i %p') AS time_end_formatted
+    DATE_FORMAT(sch.time_end, '%l:%i %p') AS time_end_formatted,
+    sch.type
 FROM teaching_assignments AS ta
 INNER JOIN instructors AS i ON i.instructor_id = ta.instructor_id
 INNER JOIN sections AS s ON s.section_id = ta.section_id
